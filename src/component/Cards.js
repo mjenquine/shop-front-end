@@ -46,7 +46,7 @@ class Cards extends Component {
         {this.state.items.map(item => {
           return (
             <div className="card" key={item._id}>
-              <img src="https://i.ebayimg.com/images/g/ZswAAOSwdVpdP0XX/s-l640.jpg" className="card-img-top" alt="" width="2" height="300"/>
+              <img src={item.img} className="card-img-top" alt="" width="2" height="300"/>
               <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
