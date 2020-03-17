@@ -20,12 +20,13 @@ class NewForm extends Component {
     try {
       let response = await fetch(this.props.baseURL + '/shop', {
         method: 'POST',
-        body: JSON.stringify({name: this.state.name}),
+        body: JSON.stringify({name: this.state.name, price: this.state.price, description: this.state.description, img: this.state.img}),
         headers: {
           'Content-Type': 'application/json'
         }
       })
       let data = await response.json()
+      console.log(data);
       this.props.handleAddItem(data)
       this.setState({
         name: '',
