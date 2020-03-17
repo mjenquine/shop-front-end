@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NewForm from './New.js'
 
 let baseURL = process.env.REACT_APP_BASEURL
 
@@ -8,44 +9,56 @@ if (process.env.NODE_ENV === 'development') {
   baseURL = 'https://enigmatic-mountain-68507.herokuapp.com/'
 }
 
-constructor(props) {
-  super(props)
-  this.state = {
-    items: []
+class Cards extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      items: []
+    }
+    this.getItems = this.getItems.bind(this)
   }
-  this.getItems = this.getItems.bind(this)
-}
 
-componentDidMount(){
-  this.getItems()
-}
-
-async getItems () {
-  try {
-    let response = await fetch(`${baseURL}/shop`)
-    let data = await response.json()
-    this.setState({items: data})
-  } catch(e) {
-    console.error(e)
+  componentDidMount(){
+    this.getItems()
   }
-}
 
-render() {
-  return (
-    <div className="container">
-    <nav>Test</nav>
-      <h1>Hi</h1>
-      {this.state.items.map(item => {
-        return (
-          <div key={item._id}>
-            {item.name}
-          </div>
-        )
-      })}
-    <footer>Footer</footer>
-    </div>
-  )
-}
+  async getItems () {
+    try {
+      let response = await fetch(`${baseURL}/shop`)
+      let data = await response.json()
+      this.setState({items: data})
+    } catch(e) {
+      console.error(e)
+    }
+  }
+
+  handleAddItem(item) {
+    const copyItems = [item, ...this.state.items]
+    this.setState({
+      items: copyItems
+    })
+  }
+
+
+  render() {
+    return (
+      <div className="container">
+        {this.state.items.map(item => {
+          return (
+            <div className="card" key={item._id}>
+              <img src="https://i.ebayimg.com/images/g/ZswAAOSwdVpdP0XX/s-l640.jpg" className="card-img-top" alt="" width="2" height="300"/>
+              <div className="card-body">
+                <h5 className="card-title">{item.name}</h5>
+                <p className="card-text">{item.description}</p>
+                <a href="#" className="btn btn-primary">Add to Cart</a>
+              </div>
+            </div>
+          )
+        })}
+      <NewForm handleAddItem={this.handleAddItem} baseURL={baseURL}/>
+      </div>
+    )
+  }
 }
 
 export default Cards
