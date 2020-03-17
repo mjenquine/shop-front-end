@@ -34,6 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+      <nav>Test</nav>
         <h1>Hi</h1>
         {this.state.items.map(item => {
           return (
