@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import NewForm from './New.js'
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -57,6 +58,7 @@ class Cards extends Component {
           )
         })}
       <NewForm handleAddItem={this.handleAddItem} baseURL={baseURL}/>
+
       </div>
     )
   }
