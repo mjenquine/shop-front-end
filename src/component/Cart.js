@@ -18,6 +18,7 @@ class Cart extends Component{
             cartItem: {}
         }
         this.getItems = this.getItems.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
     }
 
     async getItems(){
@@ -28,6 +29,18 @@ class Cart extends Component{
         }catch(e){
             console.error(e)
         }
+    }
+
+    async deleteItem(id){
+        fetch(`${baseURL}/shop/` + id, {
+            method: 'DELETE'
+        }).then(response => {
+            const findIndex = this.state.cartItems.findIndex(cartItem =>
+            cartItem._id === id)
+            const copyCartItems = [...this.state.cartItems]
+            copyCartItems.splice(findIndex, 1)
+            this.setState({cartItems: copyCartItems})
+        })
     }
 
     componentDidMount (){
@@ -41,7 +54,7 @@ class Cart extends Component{
                     <tbody>
                     <thead>Item Table:</thead>
                         {this.state.cartItems.map((item, index) => (
-                            <CartItem cartItem={item} key={item._id}/>
+                            <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem}/>
                         ))}
                     </tbody>
                 </table>

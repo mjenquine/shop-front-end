@@ -40,6 +40,12 @@ class CartItem extends Component{
     // }
 
 
+
+    async updateQty(){
+
+    }
+
+
     render(){
         return(
             <tr key={this.props.cartItem._id}>
@@ -52,7 +58,7 @@ class CartItem extends Component{
                     <a href="#">+</a>
                 </td>
                 <td>description: {this.props.cartItem.description}</td>
-                <td><button>DELETE</button></td>
+                <td><button onClick={this.props.deleteItem}>DELETE</button></td>
             </tr>
         )
     }
