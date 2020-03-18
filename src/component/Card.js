@@ -14,10 +14,12 @@ class Card extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: []
+      items: [],
+      show: false
     }
     this.getItems = this.getItems.bind(this)
     this.handleAddItem = this.handleAddItem.bind(this)
+    this.toggleAdmin = this.toggleAdmin.bind(this)
   }
 
   componentDidMount(){
@@ -41,6 +43,9 @@ class Card extends Component {
     })
   }
 
+  toggleAdmin() {
+    this.setState({show: !this.state.show})
+  }
 
   render() {
     return (
@@ -59,15 +64,19 @@ class Card extends Component {
             )
           })}
         </div>
-
+        <br/>
+        <button type="button" className="btn btn-outline-secondary btn-sm" onClick={() => {
+          this.toggleAdmin()}} >Admin</button>
+        {
+          this.state.show
+          ? <div>
+              <NewForm handleAddItem={this.handleAddItem} baseURL={baseURL}/>
+            </div>
+          : ''
+        }
       </div>
     )
   }
 }
 
 export default Card
-
-
-// <div>
-//   <NewForm handleAddItem={this.handleAddItem} baseURL={baseURL}/>
-// </div>
