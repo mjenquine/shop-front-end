@@ -24,28 +24,6 @@ class CartItem extends Component{
         // this.getItem = this.getItem.bind(this)
     }
 
-    // componentDidMount(){
-    //     // this.getItem()
-    // }
-
-    // async getItem(){
-    //     try{
-    //         let response = await fetch(`${baseURL}/shop/${this.props.cartItem._id}`)
-    //         let data = await response.json()
-    //         this.setState({item:data})
-    //         console.log(this.props.cartItem)
-    //     } catch(e){
-    //         console.error(e)
-    //     }
-    // }
-
-
-
-    async updateQty(){
-
-    }
-
-
     render(){
         return(
             <tr key={this.props.cartItem._id}>
@@ -53,9 +31,9 @@ class CartItem extends Component{
 
                 <td>Price: ${this.props.cartItem.price}</td>
                 <td>Quantity:
-                    <a href="#">-</a>
+                    <button onClick={this.props.decreaseQty}> - </button>
                     {this.props.cartItem.quantity}
-                    <a href="#">+</a>
+                    <button onClick={this.props.increaseQty}> + </button>
                 </td>
                 <td>description: {this.props.cartItem.description}</td>
                 <td><button onClick={this.props.deleteItem}>DELETE</button></td>

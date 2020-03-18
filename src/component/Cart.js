@@ -19,6 +19,8 @@ class Cart extends Component{
         }
         this.getItems = this.getItems.bind(this)
         this.deleteItem = this.deleteItem.bind(this)
+        this.increaseQty = this.increaseQty.bind(this)
+        this.decreaseQty = this.decreaseQty.bind(this)
     }
 
     async getItems(){
@@ -43,6 +45,50 @@ class Cart extends Component{
         })
     }
 
+    async increaseQty(item){
+        const newQty = parseInt(item.quantity, 10) +1
+        try{
+            const response = await fetch(`${baseURL}/shop/${item._id}`, {
+                method: 'PUT',
+                body: JSON.stringify({quantity: newQty}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const resJson = await response.json()
+            const copyCartItems = [...this.state.cartItems]
+            const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
+            copyCartItems[foundIndex].quantity = resJson.quantity
+            this.setState({cartItems: copyCartItems})
+        } catch(e){
+            console.error(e)
+        }
+    }
+
+    async decreaseQty(item){
+        const newQty = parseInt(item.quantity, 10) -1
+        if(newQty < 0){
+            alert('Negative Quantity is invalid!')
+        } else{
+            try{
+                const response = await fetch(`${baseURL}/shop/${item._id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({quantity: newQty}),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const resJson = await response.json()
+                const copyCartItems = [...this.state.cartItems]
+                const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
+                copyCartItems[foundIndex].quantity = resJson.quantity
+                this.setState({cartItems: copyCartItems})
+            } catch(e){
+                console.error(e)
+            }
+        }
+    }
+
     componentDidMount (){
         this.getItems()
     }
@@ -54,7 +100,7 @@ class Cart extends Component{
                     <tbody>
                     <thead>Item Table:</thead>
                         {this.state.cartItems.map((item, index) => (
-                            <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem}/>
+                            <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem} increaseQty={() => {this.increaseQty(item)}} decreaseQty={() => {this.decreaseQty(item)}}/>
                         ))}
                     </tbody>
                 </table>
