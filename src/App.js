@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Cards from './component/Cards.js'
 import Home from './component/Home.js'
 import Cart from './component/Cart.js'
-import New from './component/New.js'
+import Sign from './component/Sign.js'
 
 
 class App extends Component {
@@ -13,15 +13,16 @@ class App extends Component {
       <Router>
         <div className="container">
         <nav>
+          <h1>Boots</h1>
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/cart">Cart</Link>
-          <Link to="/new">New</Link>
+          <Link to="/sign">Sign Up</Link>
         </nav>
         <Route path="/" exact component={Home} />
         <Route path="/shop" component={Cards} />
         <Route path="/cart" component={Cart} />
-        <Route path="/new" component={New} />
+        <Route path="/sign" component={Sign} />
         </div>
       </Router>
     )
