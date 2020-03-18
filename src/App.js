@@ -1,48 +1,29 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Cards from './component/Cards.js'
+import Home from './component/Home.js'
+import Cart from './component/Cart.js'
+import New from './component/New.js'
 
-let baseURL = process.env.REACT_APP_BASEURL
-
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3003'
-} else {
-  baseURL = 'https://enigmatic-mountain-68507.herokuapp.com/'
-}
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      items: []
-    }
-    this.getItems = this.getItems.bind(this)
-  }
-
-  componentDidMount(){
-    this.getItems()
-  }
-
-  async getItems () {
-    try {
-      let response = await fetch(`${baseURL}/shop`)
-      let data = await response.json()
-      this.setState({items: data})
-    } catch(e) {
-      console.error(e)
-    }
-  }
 
   render() {
     return (
-      <div className="container">
-        <h1>Hi</h1>
-        {this.state.items.map(item => {
-          return (
-            <div key={item._id}>
-              {item.name}
-            </div>
-          )
-        })}
-      </div>
+      <Router>
+        <div className="container">
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="/cart">Cart</Link>
+          <Link to="/new">New</Link>
+        </nav>
+        <Route path="/" exact component={Home} />
+        <Route path="/shop" component={Cards} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/new" component={New} />
+        </div>
+      </Router>
     )
   }
 }
