@@ -16,6 +16,7 @@ class Cards extends Component {
       items: []
     }
     this.getItems = this.getItems.bind(this)
+    this.handleAddItem = this.handleAddItem.bind(this)
   }
 
   componentDidMount(){
