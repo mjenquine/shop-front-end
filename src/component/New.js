@@ -26,6 +26,7 @@ class NewForm extends Component {
         }
       })
       let data = await response.json()
+      console.log(data);
       this.props.handleAddItem(data)
       this.setState({
         name: '',
