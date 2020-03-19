@@ -8,23 +8,23 @@ class HomeSelections extends Component {
       selections: [
         {
           select: 'indoor',
-          selectURL: 'https://cdn.shopify.com/s/files/1/0419/1525/products/brown-leather-duke-chelsea-1_1024x1024.JPG?v=1584114932'
+          selectURL: 'https://huckberry.imgix.net/spree/products/462730/original/9uNW6rWBoJ_lems-shoes_boulder_boot_0_original.jpg?auto=format%2Ccompress&crop=top&fit=clamp&cs=tinysrgb&w=320&ixlib=react-9.0.1&h=320&w=320&q=50&dpr=2'
         },
         {
           select: 'outdoor',
-          selectURL: 'https://images.timberland.com/is/image/timberland/15551210-HERO?wid=720&hei=720&fit=constrain,1&qlt=85,1&op_usm=1,1,6,0'
+          selectURL: 'https://huckberry.imgix.net/spree/products/470123/original/QvnHJ1BfIc_adidas_terrex_free_hiker_hiking-boots_0_original.jpg?auto=format%2Ccompress&crop=top&fit=clamp&cs=tinysrgb&w=320&ixlib=react-9.0.1&h=320&w=320&q=50&dpr=2'
         },
         {
           select: 'style',
-          selectURL: 'https://cdn.shopify.com/s/files/1/0419/1525/products/brown-leather-duke-chelsea-1_1024x1024.JPG?v=1584114932'
+          selectURL: 'https://huckberry.imgix.net/spree/products/471555/original/VIwOXve6wd_diemme_roccia_vet_hiking-boots_0_original.jpg?auto=format%2Ccompress&crop=top&fit=clamp&cs=tinysrgb&w=320&ixlib=react-9.0.1&h=320&w=320&q=50&dpr=2'
         },
         {
-          select: 'womens',
-          selectURL: 'https://res.cloudinary.com/everlane/image/upload/c_scale/dpr_3.0,f_auto,q_auto/v1/i/5a004044_c5db.jpg'
+          select: 'trail',
+          selectURL: 'https://huckberry.imgix.net/spree/products/468768/original/mYRxO6Gjim_diemme_cortina_hiking-boots_0_original.jpg?auto=format%2Ccompress&crop=top&fit=clamp&cs=tinysrgb&w=320&ixlib=react-9.0.1&h=320&w=320&q=50&dpr=2'
         },
         {
-          select: 'mens',
-          selectURL: 'https://cdn.shopify.com/s/files/1/0048/2912/products/helm-boots-holt-dark-natural-13973389934654_345x550.progressive.jpg?v=1578690892'
+          select: 'dress',
+          selectURL: 'https://huckberry.imgix.net/spree/products/434857/original/PErOOjPwsm_nisolo_andres_0_original.jpg?auto=format%2Ccompress&crop=top&fit=clamp&cs=tinysrgb&w=320&ixlib=react-9.0.1&h=320&w=320&q=50&dpr=2'
         },
 
       ]

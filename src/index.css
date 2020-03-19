@@ -25,7 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 0px;
 }
 
 .home-selections {
@@ -68,7 +68,7 @@ body {
 
 .backgroundImage:hover {
   transform: scale(1.1);
-  transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  transition: transform 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 }
 
 .content {
@@ -102,4 +102,10 @@ body {
 
 .card-orient {
   margin: 5px;
+}
+.container {
+  padding: 0px;
+}
+.display-4, .lead {
+  margin-left: 20px;
 }
