@@ -15,15 +15,20 @@ class Card extends Component {
     super(props)
     this.state = {
       items: [],
-      show: false
+      show: false,
+      cartItems: [],
+      cartItem: {}
     }
     this.getItems = this.getItems.bind(this)
     this.handleAddItem = this.handleAddItem.bind(this)
     this.toggleAdmin = this.toggleAdmin.bind(this)
+    this.getCartItems = this.getCartItems.bind(this)
+    this.toggleAddToCart = this.toggleAddToCart.bind(this)
   }
 
   componentDidMount(){
     this.getItems()
+
   }
 
   async getItems () {
@@ -47,6 +52,37 @@ class Card extends Component {
     this.setState({show: !this.state.show})
   }
 
+  async getCartItems(){
+      try{
+          let response = await fetch(`${baseURL}/shop`)
+          let data = await response.json()
+          this.setState({cartItems: data})
+      }catch(e){
+          console.error(e)
+      }
+  }
+
+  async toggleAddToCart(item){
+      try{
+          const response = await fetch(`${baseURL}/shop/${item._id}`, {
+              method: 'PUT',
+              body: JSON.stringify({inCart: true}),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+          const resJson = await response.json()
+          console.log(resJson);
+          const copyCartItems = [...this.state.cartItems]
+          const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
+          copyCartItems[foundIndex].inCart = resJson.inCart
+          this.setState({items: copyCartItems})
+          console.log(this.state.items)
+      } catch(e){
+          console.error(e)
+      }
+  }
+
   render() {
     return (
       <div className="card-container-form">
@@ -58,7 +94,7 @@ class Card extends Component {
                 <div className="card-body">
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text">{item.description}</p>
-                  <a href="#" className="btn btn-primary">Add to Cart</a>
+                  <button className="btn btn-primary" onClick={()=>{this.toggleAddToCart(item)}}>Add to cart</button>
                 </div>
               </div>
             )
