@@ -96,9 +96,20 @@ class Cart extends Component{
     render(){
         return(
             <div className="cart">
-                <table>
+                <br></br>
+                <br></br>
+                <table className="table">
+
+                    <thead>
+                      <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Description</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
                     <tbody>
-                    <thead>Item Table:</thead>
                         {this.state.cartItems.map((item, index) => (
                             <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem} increaseQty={() => {this.increaseQty(item)}} decreaseQty={() => {this.decreaseQty(item)}}/>
                         ))}
