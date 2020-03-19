@@ -2,15 +2,13 @@ import React, {Component} from 'react'
 import CartItem from './CartItem'
 // import data from '../testData.js'
 
-let baseURL = ''
+let baseURL = process.env.REACT_APP_BASEURL
 
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://whispering-taiga-48290.herokuapp.com'
+  baseURL = 'https://enigmatic-mountain-68507.herokuapp.com/'
 }
-
-baseURL = process.env.baseURL
 
 class Cart extends Component{
     constructor(props){
@@ -46,12 +44,10 @@ class Cart extends Component{
                 }
             })
             const resJson = await response.json()
-            console.log(resJson);
             const copyCartItems = [...this.state.cartItems]
             const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
             copyCartItems[foundIndex].inCart = resJson.inCart
             this.setState({cartItems: copyCartItems})
-            console.log(this.state.cartItems)
         } catch(e){
             console.error(e)
         }
@@ -109,7 +105,7 @@ class Cart extends Component{
 
     render(){
         return(
-            <div className="cart home">
+            <div className="cart">
                 <br></br>
                 <br></br>
                 <table className="table">

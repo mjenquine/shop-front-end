@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import NewForm from './New.js'
 import '../index.css'
-let baseURL = ''
+
+let baseURL = process.env.REACT_APP_BASEURL
 
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://whispering-taiga-48290.herokuapp.com'
+  baseURL = 'https://enigmatic-mountain-68507.herokuapp.com/'
 }
-
-
 
 class Card extends Component {
   constructor(props) {
@@ -73,7 +72,6 @@ class Card extends Component {
               }
           })
           const resJson = await response.json()
-          console.log(resJson);
           const copyCartItems = [...this.state.cartItems]
           const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
           copyCartItems[foundIndex].inCart = resJson.inCart
@@ -90,7 +88,7 @@ class Card extends Component {
         <div className="container card-container" >
           {this.state.items.map(item => {
             return (
-              <div className="card index-card card-orient" style={{width: '18rem'}} key={item._id}>
+              <div className="card index-card" style={{width: '18rem'}} key={item._id}>
                 <img src={item.img} className="card-img-top" alt="" width="2" height="300"/>
                 <div className="card-body">
                   <h5 className="card-title">{item.name}</h5>
