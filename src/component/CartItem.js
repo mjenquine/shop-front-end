@@ -27,16 +27,16 @@ class CartItem extends Component{
     render(){
         return(
             <tr key={this.props.cartItem._id}>
-                <td>Item: {this.props.cartItem.name}</td>
+                <td>{this.props.cartItem.name}</td>
 
-                <td>Price: ${this.props.cartItem.price}</td>
-                <td>Quantity:
-                    <button onClick={this.props.decreaseQty}> - </button>
-                    {this.props.cartItem.quantity}
-                    <button onClick={this.props.increaseQty}> + </button>
+                <td>${this.props.cartItem.price}</td>
+                <td>
+                    <button class="btn btn-outline-dark btn-sm" onClick={this.props.decreaseQty}> - </button>
+                     {this.props.cartItem.quantity}
+                    <button class="btn btn-outline-dark btn-sm" onClick={this.props.increaseQty}> + </button>
                 </td>
-                <td>description: {this.props.cartItem.description}</td>
-                <td><button onClick={this.props.deleteItem}>DELETE</button></td>
+                <td>{this.props.cartItem.description}</td>
+                <td><button className="btn btn-outline-secondary btn-sm" onClick={this.props.deleteItem}>REMOVE ITEM</button></td>
             </tr>
         )
     }
