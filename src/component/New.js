@@ -28,7 +28,7 @@ class NewForm extends Component {
   async handleSubmit (event) {
     event.preventDefault()
     try {
-      let response = await fetch(this.props.baseURL + '/shop', {
+      let response = await fetch(`${baseURL}/shop`, {
         method: 'POST',
         body: JSON.stringify({name: this.state.name, price: this.state.price, description: this.state.description, img: this.state.img}),
         headers: {

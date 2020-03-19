@@ -2,13 +2,15 @@ import React, {Component} from 'react'
 import CartItem from './CartItem'
 // import data from '../testData.js'
 
-let baseURL = process.env.REACT_APP_BASEURL
+let baseURL = ''
 
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://enigmatic-mountain-68507.herokuapp.com/'
+  baseURL = 'https://whispering-taiga-48290.herokuapp.com'
 }
+
+baseURL = process.env.baseURL
 
 class Cart extends Component{
     constructor(props){
