@@ -1,5 +1,15 @@
 import React, {Component} from 'react'
 
+let baseURL = ''
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003'
+} else {
+  baseURL = 'https://enigmatic-mountain-68507.herokuapp.com/'
+}
+
+baseURL = process.env.baseURL
+
 class NewForm extends Component {
   constructor (props) {
   super (props)
