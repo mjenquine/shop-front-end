@@ -107,7 +107,7 @@ class Cart extends Component{
 
     render(){
         return(
-            <div className="cart">
+            <div className="cart home">
                 <br></br>
                 <br></br>
                 <table className="table">

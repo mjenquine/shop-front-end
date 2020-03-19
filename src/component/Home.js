@@ -5,7 +5,9 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <HomeSelections />
+        <div className="home">
+          <HomeSelections />
+        </div>
       </div>
     )
   }

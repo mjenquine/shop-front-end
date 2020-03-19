@@ -89,7 +89,7 @@ class Card extends Component {
         <div className="container card-container" >
           {this.state.items.map(item => {
             return (
-              <div className="card index-card" style={{width: '18rem'}} key={item._id}>
+              <div className="card index-card card-orient" style={{width: '18rem'}} key={item._id}>
                 <img src={item.img} className="card-img-top" alt="" width="2" height="300"/>
                 <div className="card-body">
                   <h5 className="card-title">{item.name}</h5>

@@ -6,7 +6,7 @@ class Cards extends Component {
     
   render() {
     return (
-      <div>
+      <div className="home">
         <Card />
       </div>
     )
