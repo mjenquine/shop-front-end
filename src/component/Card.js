@@ -70,6 +70,7 @@ class Card extends Component {
         {
           this.state.show
           ? <div>
+              <br />
               <NewForm handleAddItem={this.handleAddItem} baseURL={baseURL}/>
             </div>
           : ''
