@@ -110,15 +110,17 @@ class Card extends Component {
                 <div className="card-body">
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text">{item.description}</p>
-                  <button className="btn btn-primary" onClick={()=>{this.toggleAddToCart(item)}}>Add to cart</button>
-                  <button className="btn btn-primary" onClick={()=>{this.deleteItem(item._id)}}>Remove</button>
+                  <div className="btn-group" role="group" aria-label="Basic example">
+                    <button className="btn btn-primary" onClick={()=>{this.toggleAddToCart(item)}}>Add to cart</button>
+                    <button className="btn btn-outline-light" onClick={()=>{this.deleteItem(item._id)}}>Remove</button>
+                  </div>
                 </div>
               </div>
             )
           })}
         </div>
         <br/>
-        <button type="button" className="btn btn-outline-secondary btn-sm" onClick={() => {
+        <button type="button" className="btn btn-outline-light btn-sm" onClick={() => {
           this.toggleAdmin()}} >Admin</button>
         {
           this.state.show
