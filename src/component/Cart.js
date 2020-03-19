@@ -18,9 +18,11 @@ class Cart extends Component{
             cartItem: {}
         }
         this.getItems = this.getItems.bind(this)
-        this.deleteItem = this.deleteItem.bind(this)
+        // this.deleteItem = this.deleteItem.bind(this)
         this.increaseQty = this.increaseQty.bind(this)
         this.decreaseQty = this.decreaseQty.bind(this)
+        // this.removeItem = this.removeItem.bind(this)
+        this.toggleInCart = this.toggleInCart.bind(this)
     }
 
     async getItems(){
@@ -33,16 +35,21 @@ class Cart extends Component{
         }
     }
 
-    async deleteItem(id){
-        fetch(`${baseURL}/shop/` + id, {
-            method: 'DELETE'
-        }).then(response => {
-            const findIndex = this.state.cartItems.findIndex(cartItem =>
-            cartItem._id === id)
-            const copyCartItems = [...this.state.cartItems]
-            copyCartItems.splice(findIndex, 1)
-            this.setState({cartItems: copyCartItems})
-        })
+    // async deleteItem(id){
+    //     fetch(`${baseURL}/shop/` + id, {
+    //         method: 'DELETE'
+    //     }).then(response => {
+    //         const findIndex = this.state.cartItems.findIndex(cartItem =>
+    //         cartItem._id === id)
+    //         const copyCartItems = [...this.state.cartItems]
+    //         copyCartItems.splice(findIndex, 1)
+    //         this.setState({cartItems: copyCartItems})
+    //     })
+    // }
+
+    toggleInCart(item){
+        this.setState({inCart: !this.state.inCart})
+        console.log(item);
     }
 
     async increaseQty(item){
@@ -111,7 +118,9 @@ class Cart extends Component{
                     </thead>
                     <tbody>
                         {this.state.cartItems.map((item, index) => (
-                            <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem} increaseQty={() => {this.increaseQty(item)}} decreaseQty={() => {this.decreaseQty(item)}}/>
+                            item.inCart
+                            ? <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem} increaseQty={() => {this.increaseQty(item)}} decreaseQty={() => {this.decreaseQty(item)}} toggleInCart={()=>{this.toggleInCart(item)}}/>
+                            : ''
                         ))}
                     </tbody>
                 </table>
