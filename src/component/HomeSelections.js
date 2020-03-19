@@ -32,7 +32,7 @@ class HomeSelections extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="home-selections">
         {this.state.selections.map(({select, selectURL}) => (
           <HomeItems key={this.state.selections._id} select={select} selectURL={selectURL} />
         ))}
