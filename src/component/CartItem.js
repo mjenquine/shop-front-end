@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Cart from './Cart'
 
 let baseURL = process.env.REACT_APP_BASEURL
 
