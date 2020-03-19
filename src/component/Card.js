@@ -75,8 +75,9 @@ class Card extends Component {
           })
           const resJson = await response.json()
           console.log(resJson);
-          const foundIndex = this.state.items.findIndex(thing => thing._id === resJson._id)
           const copyCartItems = [...this.state.items]
+          const foundIndex = this.state.items.findIndex(thing => thing._id === resJson._id)
+          console.log(foundIndex);
           copyCartItems[foundIndex].inCart = resJson.inCart
           this.setState({items: copyCartItems})
       } catch(e){
