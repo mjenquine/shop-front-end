@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
   baseURL = 'https://whispering-taiga-48290.herokuapp.com'
 }
 
-baseURL = process.env.baseURL
+
 
 class Card extends Component {
   constructor(props) {
