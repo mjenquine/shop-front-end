@@ -11,5 +11,4 @@ Stomping grounds is a full CRUD application designed to display our skills with:
 Starting from our initial wire frame, the three of us split off to work on individual site components. We collaborated to debug and deploy both the API and React app to Heroku.
 
 Wire frame:
-![Image of wire frame]
-(https://files.slack.com/files-pri/T0351JZQ0-F01067L7HUG/boot_site_wireframe.jpg)
+![Image of wire frame](https://files.slack.com/files-pri/T0351JZQ0-F01067L7HUG/boot_site_wireframe.jpg)
