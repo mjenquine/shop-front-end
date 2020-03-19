@@ -68,7 +68,7 @@ body {
 
 .backgroundImage:hover {
   transform: scale(1.1);
-  transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  transition: transform 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 }
 
 .content {
@@ -105,4 +105,7 @@ body {
 }
 .container {
   padding: 0px;
+}
+.display-4, .lead {
+  margin-left: 20px;
 }

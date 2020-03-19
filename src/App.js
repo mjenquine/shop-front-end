@@ -11,8 +11,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
-        <a className="navbar-brand">Stomping Ground</a>
+        <div className="container-fluid">
+          <div className="jumbotron jumbotron-fluid bg-dark text-white">
+            <div className="container">
+              <h1 className="text-white display-4">STOMPING GROUNDS</h1>
+              <p className="text-light lead">premium boot retailer for all elements</p>
+            </div>
+          </div>
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
