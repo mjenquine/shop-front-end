@@ -1,5 +1,15 @@
 import React, {Component} from 'react'
 
+let baseURL = ''
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003'
+} else {
+  baseURL = 'https://whispering-taiga-48290.herokuapp.com'
+}
+
+
+
 class NewForm extends Component {
   constructor (props) {
   super (props)
@@ -18,7 +28,7 @@ class NewForm extends Component {
   async handleSubmit (event) {
     event.preventDefault()
     try {
-      let response = await fetch(this.props.baseURL + '/shop', {
+      let response = await fetch(`${baseURL}/shop`, {
         method: 'POST',
         body: JSON.stringify({name: this.state.name, price: this.state.price, description: this.state.description, img: this.state.img}),
         headers: {
