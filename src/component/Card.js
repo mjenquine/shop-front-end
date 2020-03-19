@@ -25,6 +25,7 @@ class Card extends Component {
     this.toggleAdmin = this.toggleAdmin.bind(this)
     this.getCartItems = this.getCartItems.bind(this)
     this.toggleAddToCart = this.toggleAddToCart.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
   }
 
   componentDidMount(){
@@ -74,15 +75,29 @@ class Card extends Component {
           })
           const resJson = await response.json()
           console.log(resJson);
-          const copyCartItems = [...this.state.cartItems]
-          const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
+          const foundIndex = this.state.items.findIndex(thing => thing._id === resJson._id)
+          const copyCartItems = [...this.state.items]
           copyCartItems[foundIndex].inCart = resJson.inCart
           this.setState({items: copyCartItems})
-          console.log(this.state.items)
       } catch(e){
           console.error(e)
       }
   }
+  async deleteItem (id){
+   try {
+   let response = await fetch(`${baseURL}/shop/${id}`, {
+      method: 'DELETE'
+      })
+      let data = await response.json()
+      const foundItem = this.state.items.findIndex(item => item._id === id)
+      const copyItems = [...this.state.items]
+      copyItems.splice(foundItem, 1)
+      this.setState({items: copyItems})
+   } catch(e){
+     console.error(e)
+   }
+  }
+
 
   render() {
     return (
@@ -96,6 +111,7 @@ class Card extends Component {
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text">{item.description}</p>
                   <button className="btn btn-primary" onClick={()=>{this.toggleAddToCart(item)}}>Add to cart</button>
+                  <button className="btn btn-primary" onClick={()=>{this.deleteItem(item._id)}}>Remove</button>
                 </div>
               </div>
             )

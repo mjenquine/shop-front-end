@@ -10,14 +10,17 @@ if (process.env.NODE_ENV === 'development') {
   baseURL = 'https://whispering-taiga-48290.herokuapp.com'
 }
 
-baseURL = process.env.baseURL
+
 
 class Cart extends Component{
     constructor(props){
         super(props)
         this.state = {
             cartItems: [],
-            cartItem: {}
+            cartItem: {
+              quantity: 0
+            }
+
         }
         this.getItems = this.getItems.bind(this)
         this.increaseQty = this.increaseQty.bind(this)
@@ -46,12 +49,10 @@ class Cart extends Component{
                 }
             })
             const resJson = await response.json()
-            console.log(resJson);
             const copyCartItems = [...this.state.cartItems]
             const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
             copyCartItems[foundIndex].inCart = resJson.inCart
             this.setState({cartItems: copyCartItems})
-            console.log(this.state.cartItems)
         } catch(e){
             console.error(e)
         }
