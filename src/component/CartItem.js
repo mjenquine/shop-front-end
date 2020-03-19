@@ -30,12 +30,12 @@ class CartItem extends Component{
 
                 <td>${this.props.cartItem.price}</td>
                 <td>
-                    <button class="btn btn-outline-dark btn-sm" onClick={this.props.decreaseQty}> - </button>
+                    <button className="btn btn-outline-dark btn-sm" onClick={this.props.decreaseQty}>-</button>
                      {this.props.cartItem.quantity}
-                    <button class="btn btn-outline-dark btn-sm" onClick={this.props.increaseQty}> + </button>
+                    <button className="btn btn-outline-dark btn-sm" onClick={this.props.increaseQty}>+</button>
                 </td>
                 <td>{this.props.cartItem.description}</td>
-                <td><button className="btn btn-outline-secondary btn-sm" onClick={this.props.deleteItem}>REMOVE ITEM</button></td>
+                <td><button className="btn btn-outline-secondary btn-sm" onClick={this.props.toggleRemove}>REMOVE ITEM</button></td>
             </tr>
         )
     }

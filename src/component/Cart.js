@@ -18,9 +18,9 @@ class Cart extends Component{
             cartItem: {}
         }
         this.getItems = this.getItems.bind(this)
-        this.deleteItem = this.deleteItem.bind(this)
         this.increaseQty = this.increaseQty.bind(this)
         this.decreaseQty = this.decreaseQty.bind(this)
+        this.toggleRemove = this.toggleRemove.bind(this)
     }
 
     async getItems(){
@@ -33,17 +33,28 @@ class Cart extends Component{
         }
     }
 
-    async deleteItem(id){
-        fetch(`${baseURL}/shop/` + id, {
-            method: 'DELETE'
-        }).then(response => {
-            const findIndex = this.state.cartItems.findIndex(cartItem =>
-            cartItem._id === id)
+
+    async toggleRemove(item){
+        try{
+            const response = await fetch(`${baseURL}/shop/${item._id}`, {
+                method: 'PUT',
+                body: JSON.stringify({inCart: false}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const resJson = await response.json()
+            console.log(resJson);
             const copyCartItems = [...this.state.cartItems]
-            copyCartItems.splice(findIndex, 1)
+            const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
+            copyCartItems[foundIndex].inCart = resJson.inCart
             this.setState({cartItems: copyCartItems})
-        })
+            console.log(this.state.cartItems)
+        } catch(e){
+            console.error(e)
+        }
     }
+
 
     async increaseQty(item){
         const newQty = parseInt(item.quantity, 10) +1
@@ -60,6 +71,7 @@ class Cart extends Component{
             const foundIndex = this.state.cartItems.findIndex(thing => thing._id === resJson._id)
             copyCartItems[foundIndex].quantity = resJson.quantity
             this.setState({cartItems: copyCartItems})
+            console.log(item)
         } catch(e){
             console.error(e)
         }
@@ -99,7 +111,6 @@ class Cart extends Component{
                 <br></br>
                 <br></br>
                 <table className="table">
-
                     <thead>
                       <tr>
                         <th scope="col">Item</th>
@@ -111,7 +122,9 @@ class Cart extends Component{
                     </thead>
                     <tbody>
                         {this.state.cartItems.map((item, index) => (
-                            <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem} increaseQty={() => {this.increaseQty(item)}} decreaseQty={() => {this.decreaseQty(item)}}/>
+                            item.inCart
+                            ? <CartItem cartItem={item} key={item._id} deleteItem={this.deleteItem} increaseQty={() => {this.increaseQty(item)}} decreaseQty={() => {this.decreaseQty(item)}} toggleRemove={()=>{this.toggleRemove(item)}}/>
+                            : ''
                         ))}
                     </tbody>
                 </table>
