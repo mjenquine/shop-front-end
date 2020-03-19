@@ -9,9 +9,13 @@ class HomeItems extends Component {
   }
   render() {
     return (
-      <div style={{backgroundImage: `url(${this.props.selectURL})`}}>
-        <h1>{this.props.select.toUpperCase()}</h1>
-        <span><a href="/shop">SHOP NOW</a></span>
+      <div className="menu-item">
+        <div className="backgroundImage" style={{backgroundImage: `url(${this.props.selectURL})`}}>
+        </div>
+        <div className="content">
+          <h1 className="title">{this.props.select.toUpperCase()}</h1>
+          <span className="subtitle"><a href="/shop">SHOP NOW</a></span>
+        </div>
       </div>
     )
   }
