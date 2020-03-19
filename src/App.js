@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Cards from './component/Cards.js'
 import Home from './component/Home.js'
 import Cart from './component/Cart.js'
-import New from './component/New.js'
+import Sign from './component/Sign.js'
 
 
 class App extends Component {
@@ -12,16 +12,26 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/cart">Cart</Link>
-          <Link to="/new">New</Link>
-        </nav>
+
+        <ul className="nav nav-tabs">
+          <li className="nav-item">
+            <Link className="nav-link" to="/">Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/shop">Shop</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/cart">Cart</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/new">New</Link>
+          </li>
+        </ul>
+
         <Route path="/" exact component={Home} />
         <Route path="/shop" component={Cards} />
         <Route path="/cart" component={Cart} />
-        <Route path="/new" component={New} />
+        <Route path="/sign" component={Sign} />
         </div>
       </Router>
     )
