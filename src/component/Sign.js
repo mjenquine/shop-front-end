@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import SignIn from './SignIn.js'
 
 class Sign extends Component {
   render() {
     return (
       <div>
-        <h1>Test</h1>
+        <SignIn />
       </div>
     )
   }
