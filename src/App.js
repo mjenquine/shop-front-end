@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-
+        <a className="navbar-brand">Stomping Ground</a>
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
@@ -27,7 +27,6 @@ class App extends Component {
             <Link className="nav-link" to="/new">New</Link>
           </li>
         </ul>
-
         <Route path="/" exact component={Home} />
         <Route path="/shop" component={Cards} />
         <Route path="/cart" component={Cart} />

@@ -2,15 +2,24 @@
   border: 1px solid gold;
 } */
 
+:root {
+  --french-blue: #3a4660;
+  --comfort-tan: #c9af98;
+  --peachy-cream: #ed8a63;
+  --brown-bonnet: #845007;
+  --white-ish: #f9f8fd;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
 }
-.index-card {
-
-}
 
 /* Home Styling */
+
+body {
+  background-color: var(--white-ish);
+}
 
 .home {
   display: flex;
@@ -92,5 +101,5 @@
 }
 
 .card-orient {
-  margin: 5px 0px;
+  margin: 5px;
 }
