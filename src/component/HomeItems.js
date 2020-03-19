@@ -11,7 +11,7 @@ class HomeItems extends Component {
     return (
       <div style={{backgroundImage: `url(${this.props.selectURL})`}}>
         <h1>{this.props.select.toUpperCase()}</h1>
-        <span>SHOP NOW</span>
+        <span><a href="/shop">SHOP NOW</a></span>
       </div>
     )
   }
