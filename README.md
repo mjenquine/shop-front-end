@@ -12,12 +12,12 @@ Stomping grounds is a full CRUD application designed to display our skills with:
 
 Starting from our initial wire frame, the three of us split off to work on individual site components. We collaborated to debug and deploy both the API and React app to Heroku.
 
-###As a group our greatest strengths were:
+### As a group our greatest strengths were:
 - Proactively and effectively splitting up the components of the app up between ourselves so we could all contribute equally according to our best skills.
 - Consistently checking in with each other and using each others' eyes to debug and refactor as the code increased in density
 - Seeking innovative solutions and using our resources on-hand to improve the functionality of our app.
 
-###And our most difficult challenges were:
+### And our most difficult challenges were:
 - Tying the objects loaded into the Shop to the Cart, as those are two separate routes in our React Router
 - Ensuring our feature branches could properly merge onto the dev and master branches of GitHub without merge conflicts causing a bug
 
