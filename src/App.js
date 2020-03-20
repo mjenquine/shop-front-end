@@ -18,7 +18,7 @@ class App extends Component {
               <p className="text-light lead">premium boot retailer for all elements</p>
             </div>
           </div>
-        <ul className="nav nav-tabs">
+        <ul className="nav nav-tabs align-items-center justify-content-center">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
           </li>

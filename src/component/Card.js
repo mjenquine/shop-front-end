@@ -102,8 +102,8 @@ class Card extends Component {
 
   render() {
     return (
-      <div className="card-container-form">
-        <div className="container card-container" >
+      <div className="card-container-form home">
+        <div className="container card-container align-items-center justify-content-center" >
           {this.state.items.map(item => {
             return (
               <div className="card index-card card-orient" style={{width: '18rem'}} key={item._id}>
